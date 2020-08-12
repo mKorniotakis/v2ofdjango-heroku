@@ -387,5 +387,8 @@ admin.site.site_url = '/myapp'
 DJANGO_TABLES2_TEMPLATE = 'django_tables2/bootstrap-responsive.html'
 
 
-# GDAL Library
-GDAL_LIBRARY_PATH = environ.get('/usr/include/gdal')
+# GDAL Library on Heroku
+# GDAL_LIBRARY_PATH = environ.get('/usr/include/gdal')
+
+GDAL_LIBRARY_PATH = os.environ.get('GDAL_LIBRARY_PATH')
+GEOS_LIBRARY_PATH = os.environ.get('GEOS_LIBRARY_PATH')
