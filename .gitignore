@@ -7,6 +7,5 @@ mysite/myapp/templatetags/__pycache__/*
 mysite/myapp/old_*
 mysite/static/*
 mysite/package-lock.json
-mysite/node_modules/*
 mysite/userprofiles/__pycache__/*
 mysite/userprofiles/migrations/__pycache__/*
