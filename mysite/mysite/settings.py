@@ -226,7 +226,7 @@ STATICFILES_DIRS = (
 
 # Media Files
 MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR + '/media/'
+MEDIA_ROOT = os.path.join(PROJECT_ROOT, '/heroku-v2ofdjango/V2ofDjango/mysite/media')
 # MEDIA_ROOT = '/home/vassilis/globe/globeproject/mysite/media/'
 
 
@@ -345,7 +345,8 @@ AVATAR_STORAGE_DIR = 'userprofiles/avatars/'
 AVATAR_MAX_AVATARS_PER_USER = 5
 AVATAR_AUTO_GENERATE_SIZES = [80, 50, 35]
 AVATAR_THUMB_FORMAT = 'PNG'
-AVATAR_CHANGE_TEMPLATE = BASE_DIR + '/userprofiles/templates/avatar/change.html'
+AVATAR_CHANGE_TEMPLATE = os.path.join(PROJECT_ROOT, '/heroku-v2ofdjango/V2ofDjango/mysite/userprofiles/templates/avatar/change.html')
+
 
 JET_THEMES = [
     {
