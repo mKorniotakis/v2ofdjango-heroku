@@ -1,1 +1,1 @@
-web: gunicorn --pythonpath="$PWD/mysite mysite.wsgi --log-file -
+web: gunicorn --pythonpath="$PWD/mysite" mysite.wsgi --log-file -
