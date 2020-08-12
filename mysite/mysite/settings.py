@@ -11,12 +11,14 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 """
 import datetime
 import os
+from pathlib import Path
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 from django.contrib import admin
 
 # PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
 PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
 BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
 # BASE_DIR = os.path.dirname(PROJECT_DIR)
 
@@ -201,7 +203,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = BASE_DIR + '/static/'
+
+# STATIC_ROOT = BASE_DIR + '/static/'
+
+STATIC_ROOT = os.path.join(PROJECT_ROOT, '/heroku-v2ofdjango/V2ofDjango/mysite/myapp/static/')
+
 PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # List of finder classes that know how to find static files in
@@ -212,6 +218,11 @@ STATICFILES_FINDERS = (
     # 'django.contrib.staticfiles.finders.DefaultStorageFinder',
 )
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+    "/heroku-v2ofdjango/V2ofDjango/mysite/myapp/static/"
+)
 
 # Media Files
 MEDIA_URL = '/media/'
