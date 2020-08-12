@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 import datetime
 import os
 from pathlib import Path
+from os import environ
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 from django.contrib import admin
@@ -384,3 +385,7 @@ JET_THEMES = [
 admin.site.site_url = '/myapp'
 
 DJANGO_TABLES2_TEMPLATE = 'django_tables2/bootstrap-responsive.html'
+
+
+# GDAL Library
+GDAL_LIBRARY_PATH = environ.get('/usr/include/gdal')
