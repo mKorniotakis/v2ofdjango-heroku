@@ -1,0 +1,159 @@
+{% extends "gis/base.html" %}
+
+{% load i18n %}
+
+{% block head_title %}{% trans "Map Viewer" %}{% endblock %}
+
+{% block extra_head %}
+    {% load static %}
+{#    <link rel="stylesheet" href="{% static 'gis/css/map_full.css' %}"/>#}
+    <link rel="stylesheet" href="{% static 'gis/css/ol3.css' %}"/>
+    <!-- Openlayers -->
+    <link rel="stylesheet" href="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.2.0/css/ol.css"
+          type="text/css"/>
+    <script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.2.0/build/ol.js"></script>
+    <!-- OL-ext -->
+    <link rel="stylesheet" href="https://cdn.rawgit.com/Viglino/ol-ext/master/dist/ol-ext.min.css"/>
+    <script type="text/javascript" src="https://cdn.rawgit.com/Viglino/ol-ext/master/dist/ol-ext.min.js"></script>
+    <!-- OL-layerswitcher -->
+    <link rel="stylesheet" href="https://unpkg.com/ol-layerswitcher@3.0.0/src/ol-layerswitcher.css" type="text/css"/>
+{% endblock %}
+
+
+{% block content %}
+    <div class="container-fluid">
+        <div class="map" id="map"></div>
+        <div class="row">
+            <div class="col-sm-4 col-md-3 sidebar sidebar-left float-left">
+                <div class="card border-dark sidebar-body" id="accordion-left">
+                    <!-- Card 1 -->
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <a class="link" data-toggle="collapse" href="#layers">
+                                    <i class="fa fa-list-alt"></i>
+                                    Layers
+                                </a>
+                                <span class="slide-submenu float-right">
+                                    <i class="fa fa-caret-square-left"></i>
+                                </span>
+                            </h5>
+                        </div>
+                        <div id="layers" class="card-collapse collapse in">
+                            <div class="card-text list-group">
+                                <a href="#" class="list-group-item">
+                                    <i class="fa fa-globe"></i> Open Street Map
+                                </a>
+                                <a href="#" class="list-group-item">
+                                    <i class="fa fa-globe"></i> Bing
+                                </a>
+                                <a href="#" class="list-group-item">
+                                    <i class="fa fa-globe"></i> WMS
+                                </a>
+                                <a href="#" class="btn btn-success" id="submit">
+                                    {% trans "Test" %}
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <a class="link" data-toggle="collapse" href="#properties">
+                                    <i class="fa fa-sliders-h"></i>
+                                    Map controls
+                                </a>
+                            </h5>
+                        </div>
+                        <div id="properties" class="card-collapse collapse in">
+                            <div class="options card-text list-group scroll-box">
+                                <!-- Rounded switch -->
+                                <label class="switch">
+                                    <input type="checkbox" checked data-size="mini" id="polygon"
+                                           data-size="mini"
+                                           data-toggle="toggle"
+                                           data-on="polygon"
+                                           data-off="polygon">
+                                    <span class="slider round">
+                                        </span>
+                                    <a>Extract polygons</a>
+                                </label>
+                                <label class="switch">
+                                    <input type="checkbox" checked data-size="mini" class="mySlider"
+                                           data-toggle="toggle"
+                                           data-on="MousePosition"
+                                           data-off="MousePosition">
+                                    <span class="slider round">
+                                    </span>
+                                    <a>Coordinates</a>
+                                </label>
+                                <label class="switch">
+                                    <input type="checkbox" checked data-size="mini" class="mySlider"
+                                           data-toggle="toggle"
+                                           data-on="LayerSwitcher"
+                                           data-off="LayerSwitcher">
+                                    <span class="slider round">
+                                    </span>
+                                    <a>Layer Switcher</a>
+                                </label>
+                                <label class="switch">
+                                    <input type="checkbox" checked data-size="mini" class="mySlider"
+                                           data-toggle="toggle"
+                                           data-on="ScaleLine"
+                                           data-off="ScaleLine">
+                                    <span class="slider round">
+                                    </span>
+                                    <a>Scale line</a>
+                                </label>
+                                <label class="switch">
+                                    <input type="checkbox" checked data-size="mini" class="mySlider"
+                                           data-toggle="toggle"
+                                           data-on="Zoom"
+                                           data-off="Zoom">
+                                    <span class="slider round">
+                                    </span>
+                                    <a>Zoom control</a>
+                                </label>
+                                <label class="switch">
+                                    <input type="checkbox" checked data-size="mini" class="Toolbar"
+                                           data-toggle="toggle"
+                                           data-on="Toolbar"
+                                           data-off="Toolbar">
+                                    <span class="slider round">
+                                    </span>
+                                    <a>Control bar</a>
+                                </label>
+                                <label class="switch">
+                                    <input id="line" type="checkbox" unchecked data-size="mini" class="Graticule"/>
+                                    <span class="slider round">
+                                    </span>
+                                    <a>Draw lines</a>
+                                </label>
+                                <label class="switch">
+                                    <input id="border" type="checkbox" unchecked data-size="mini" class="Graticule"/>
+                                    <span class="slider round">
+                                    </span>
+                                    <a>Draw border lines</a>
+                                </label>
+                                <label class="switch">
+                                    <input id="coords" type="checkbox" unchecked data-size="mini" class="Graticule"/>
+                                    <span class="slider round">
+                                    </span>
+                                    <a>Draw coords</a>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mini-submenu mini-submenu-left float-left">
+            <i class="fa fa-bars"></i>
+        </div>
+        <div class="mini-submenu mini-submenu-right float-right">
+            <i class="fa fa-tasks"></i>
+        </div>
+    </div>
+{% endblock %}

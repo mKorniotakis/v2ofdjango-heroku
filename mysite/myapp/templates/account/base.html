@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block head_links %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'account/css/login.css' %}"/>
+{% endblock %}
+
+
+{% block footer %}
+    <footer class="footer footer-default">
+        <div class="container">
+            <nav class="float-left">
+                <ul>
+                    <li>
+                        <a href="https://www.hua.gr/">
+                            Harokopio University
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </footer>
+{% endblock %}
+
+{# The following JS is needed to change the appearance when selecting choises in the profile page #}
+{% block body_js %}
+    <script>
+        $('a.nav-link').mouseover(function () {
+            $('a.nav-link.active').removeClass('active');
+            $(this).addClass('active');
+        });
+    </script>
+{% endblock %}

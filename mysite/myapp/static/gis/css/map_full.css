@@ -1,0 +1,221 @@
+body {
+    overflow: hidden;
+}
+
+/*.navbar-offset {*/
+    /*margin-top: 60px;*/
+/*}*/
+
+#map {
+    position: absolute !important;
+    /*top: 55px;*/
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    z-index: 35;
+}
+
+#map .ol-zoom .ol-search {
+    font-size: 1.2em !important;
+}
+
+.zoom-top-opened-sidebar {
+    margin-top: 5px;
+}
+
+.zoom-top-collapsed {
+    margin-top: 45px;
+}
+
+.search-top-opened-sidebar {
+    margin-top: 5px;
+}
+
+.search-top-collapsed {
+    margin-top: 45px;
+    top: .5em;
+    left: .5em;
+}
+
+.mini-submenu {
+    display: none;
+    background-color: rgba(0, 60, 136, .5);
+    border: 3px solid rgba(255, 255, 255, .8);
+    border-radius: 5px;
+    padding: 2px;
+    position: relative;
+    width: 32px;
+    text-align: center;
+    color: #FFFFFF;
+}
+
+.mini-submenu-left {
+    position: relative;
+    top: 60px;
+    left: .5em;
+    z-index: 40;
+}
+
+.mini-submenu-right {
+    position: relative;
+    top: 60px;
+    right: .5em;
+    z-index: 40;
+}
+
+/* CSS for slide sidebar */
+
+.sidebar {
+    z-index: 45;
+}
+
+.main-row {
+    position: relative;
+    top: 0;
+}
+
+.mini-submenu:hover {
+    cursor: pointer;
+}
+
+.slide-submenu {
+    display: inline-block;
+    padding-left: 3px;
+    padding-right: 3px;
+    background: #FFFFFF;
+    border: 3px solid rgba(255, 255, 255, 0.8);
+    border-radius: 4px;
+    text-align: center;
+    cursor: pointer;
+    color: #82a1c2;
+}
+
+/* CSS link color */
+.link {
+    color: #809ec5;
+}
+
+/* CSS link hover (green) */
+.link:hover {
+    color: darkgreen;
+}
+
+a.btn.btn-success {
+    padding-left: 2em;
+    padding-right: 2em;
+}
+
+.ol-control.ol-bar .ol-control button i {
+    color: #fff;
+}
+
+/* CSS coordinates */
+.ol-mouse-position {
+    color: #fff;
+    background-color: rgba(0, 60, 136, .5);
+    padding: 3.5px 10px;
+    border-radius: 5px;
+}
+
+/* CSS search nominatim */
+.ol-search {
+    top: 4em !important;
+    left: 0.5em !important;
+}
+
+.ol-search ul {
+    color: #333;
+    font-size: 0.85em;
+    max-width: 21em;
+}
+
+.ol-search ul i {
+    display: block;
+    color: #333;
+    font-size: 0.85em;
+}
+
+.info {
+    display: inline-block;
+    width: 100%;
+}
+
+.info a img {
+    height: 100px;
+    margin-right: .5em;
+    float: left;
+}
+
+/* CSS for rounded slider checkbox */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 20px;
+    vertical-align: central;
+}
+
+.switch input {
+    display: none;
+}
+
+.switch a {
+    position: relative;
+    display: inline-block;
+    left: 60px;
+    width: 200px;
+    color: #809ec5 !important;
+}
+
+.slider {
+    position: relative;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.slider:before {
+    position: relative;
+    content: "";
+    height: 16px;
+    width: 16px;
+    left: 4px;
+    bottom: 2px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+input:checked + .slider {
+    background-color: rgba(0, 60, 136, .5);
+}
+
+input:focus + .slider {
+    box-shadow: 0 0 1px rgba(0, 60, 136, .5);
+}
+
+input:checked + .slider:before {
+    -webkit-transform: translateX(16px);
+    -ms-transform: translateX(16px);
+    transform: translateX(16px);
+}
+
+/* Rounded sliders */
+.slider.round {
+    border-radius: 20px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
+/* CSS for scrolling inside card */
+.scroll-box {
+    overflow-y: scroll;
+    height: 100px;
+}

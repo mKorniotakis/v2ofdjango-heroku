@@ -1,0 +1,17 @@
+{% extends "mk/base.html" %}
+
+{% load render_table from django_tables2 %}
+{% load i18n filters%}
+
+
+{% block campaigns %}
+    <h1>Campaigns Detail</h1>
+    <table>
+        {% for name, value in object|get_fields %}
+            <tr>
+                <td>{{ name }}</td>
+                <td>{{ value }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

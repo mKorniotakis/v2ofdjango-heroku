@@ -1,0 +1,115 @@
+{% extends "../account/base.html" %}
+{% load i18n avatar_tags bootstrap static socialaccount %}
+
+{% block title %}{% trans "Your profile" %}{% endblock %}
+
+{% block body_tag %}
+    <body class="profile-page sidebar-collapse">
+{% endblock %}
+
+{% block page-header %}
+    <style>
+        .grey {
+            color: grey;
+        }
+
+        .success {
+            color: green;
+        }
+    </style>
+    <div class="page-header header-filter" data-parallax="true"
+         style="background-image: url({% static 'assets/img/city-profile.jpg' %});"></div>
+{% endblock %}
+
+{% block content %}
+    <div class="profile-content">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 ml-auto mr-auto">
+                    <div class="profile">
+                        <div class="avatar">
+                            {% get_social_accounts user as accounts %}
+                            {% if accounts %}
+                                <img src="{{ user.socialaccount_set.all.0.get_avatar_url }}"
+                                     class="avatar img-raised rounded-circle img-fluid"/>
+                            {% else %}
+                                <a href="{% url 'avatar_change' %}">
+                                    {% avatar user class="avatar img-raised rounded-circle img-fluid img-responsive" id="user_avatar" %}
+                                </a>
+                            {% endif %}
+                        </div>
+                        <div class="name">
+                            <h3 class="title">{{ user.username }}</h3>
+                            <h6>{{ user.email }}</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% block profile %}
+                <div class="row">
+                    <div class="ml-auto mr-auto col-xs-12 col-md-offset-1 col-md-10 col-md-offset-1 col-lg-offset-2 col-lg-8 col-lg-offset-2">
+                        <p>{% if profile.completion_level == 100 %}<i class="fa fa-user fa-lg success"></i>
+                            &nbsp;{% endif %}{% trans "Profile completed at" %}
+                            <span class="generic_bold">
+				                {{ profile.completion_level }}%
+                            </span>
+                        </p>
+                        <div class="progress">
+                            <div class="progress-bar progress-bar-success"
+                                 style="width:{{ profile.completion_level }}%;">
+                                {{ profile.completion_level }}%
+                            </div>
+                        </div>
+                        {% if not profile.completion_level == 100 %}
+                            <p class="alert alert-info text-center">
+                                <i class="fa fa-user-times fa-lg"></i>&nbsp;{% trans "Your profile must be completed in order to access all the features of the site" %}
+                            </p>
+                            <h3 class="text-center"
+                                style="margin-bottom:1.5em">{% trans "Thank you for completing these informations:" %}</h3>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 ml-auto mr-auto">
+                        <div class="profile-tabs">
+                            <ul class="nav nav-pills nav-pills-icons justify-content-center">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{% url 'account_email' %}">
+                                        {% if not profile.email_is_verified %}
+                                            <i class="material-icons grey">mail</i>
+                                            Verify e-mail
+                                        {% else %}
+                                            <i class="material-icons success">mail</i>
+                                            Edit e-mail
+                                        {% endif %}
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{% url "profile-identity-form" profile.pk %}">
+                                        {% if not profile.personal_info_is_completed %}
+                                            <i class="material-icons grey">input</i>
+                                            Complete now
+                                        {% else %}
+                                            <i class="material-icons success">verified_user</i>
+                                            Edit info
+                                        {% endif %}
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{% url 'avatar_change' %}">
+                                        <i class="material-icons">account_circle</i>Change avatar
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{% url 'account_change_password' %}">
+                                        <i class="material-icons">lock</i>Change password
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            {% endblock %}
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends "mk/base.html" %}
+
+{% load render_table from django_tables2 %}
+{% load i18n filters %}
+
+{% block campaigns %}
+    {% render_table tables.1 %}
+{% endblock %}
+
+{% block mnos %}
+    {% render_table tables.0 %}
+<div> <canvas id="myChart"></canvas></div>
+{% endblock %}
+
+
+{% block networks %}
+    {% render_table tables.2 %}
+{% endblock %}
+

@@ -1,0 +1,14 @@
+{% extends "mk/base.html" %}
+
+{% load render_table from django_tables2 %}
+{% load i18n %}
+
+
+
+{% block campaigns %}
+    {% render_table tables.1 %}
+{% endblock %}
+
+{% block mnos %}
+    {% render_table tables.0 %}
+{% endblock %}

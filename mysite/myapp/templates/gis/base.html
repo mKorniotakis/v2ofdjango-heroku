@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block footer %}
+    <footer class="footer footer-default">
+        <div class="container">
+            <nav class="float-left">
+                <ul>
+                    <li>
+                        <a href="https://www.hua.gr/">
+                            Harokopio University
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </footer>
+{% endblock %}
+
+
+{% block body_js %}
+    {% load static %}
+    <!-- OL Switcher -->
+    <script src="https://unpkg.com/ol-layerswitcher@3.0.0"></script>
+    <!-- Custom OL JS -->
+    <script type="module" src="{% static 'gis/js/map_full.js' %}"></script>
+    {#    The following script is not required. It is just for legacy purposes. #}
+    {#    <script type="text/javascript"#}
+    {#            src="http://nocdit.hua.gr/GLOBE2/813.js"></script>#}
+{% endblock %}

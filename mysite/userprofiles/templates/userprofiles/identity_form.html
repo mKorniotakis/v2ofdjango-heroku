@@ -1,0 +1,25 @@
+{% extends "userprofiles/home.html" %}
+
+{% load i18n avatar_tags bootstrap static socialaccount %}
+
+{% block profile %}
+        <div class="row">
+            <div class="col-md-6 ml-auto mr-auto">
+                <div class="tim-typo">
+                    <div style="float:left;margin:1em 1em 0 0">
+                        <a href="{% url 'avatar_change' %}">
+                            {% avatar user 50 class="img-circle img-responsive" style="vertical-align:center" id="user_avatar" %}
+                        </a>
+                    </div>
+                        <h1>{{ user.username }}  {% trans "Identity" %}</h1>
+                </div>
+                <form action="" class="form-horizontal" method="post">{% csrf_token %}
+                    {{ form|bootstrap }}
+                    <div class="text-center" style="margin-top:2.5em">
+                        <input type="submit" class="btn btn-primary btn-lg pull-right" value="{% trans "Save" %}"/>
+                        <a href="javascript:history.back()" class="btn btn-lg btn-default">{% trans "Back" %}</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+{% endblock %}

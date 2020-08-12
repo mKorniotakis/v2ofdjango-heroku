@@ -1,0 +1,54 @@
+{% extends "userprofiles/home.html" %}
+
+{% load i18n avatar_tags bootstrap static socialaccount %}
+
+{% block title %}{% trans "Change avatar" %}{% endblock %}
+
+<!--<style>-->
+<!--#chooseNew,-->
+<!--#uploadNew{-->
+    <!--display: inline-block;-->
+    <!--vertical-align: top;-->
+<!--}-->
+
+
+
+
+
+<!--</style>-->
+
+{% block profile %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="profile-tabs">
+                {% if not avatars %}
+                <h6>{% trans "You haven't uploaded an avatar yet. Please upload one now." %}</h6>
+                {% else %}
+
+                        <div class="form-group">
+                        <form method="POST" action="{% url 'avatar_change' %}">
+                            {{ primary_avatar_form|bootstrap }}
+                            <p>{% csrf_token %}
+                                <input class="btn btn-primary btn-round btn-lg" type="submit"
+                                       value="{% trans " Choose new Default" %}"/>
+                            </p>
+                        </form>
+                        </div>
+                        {% endif %}
+                        <div class="form-group">
+                            <form enctype="multipart/form-data" method="POST" action="{% url 'avatar_add' %}">
+                            {{ upload_avatar_form|bootstrap }}
+                            <p>{% csrf_token %}
+                                <input class="btn btn-primary btn-round btn-lg" type="submit"
+                                       value="{% trans " Upload New Image"%}"/>
+                            </p>
+                            </form>
+                        </div>
+
+        </div>
+    </div>
+</div>
+<div class="text-center" style="margin-top:2.5em">
+    <a href="javascript:history.back()" class="btn btn-lg btn-default">{% trans "Back" %}</a>
+</div>
+{% endblock %}

@@ -1,0 +1,13 @@
+.idea
+dump*
+mysite/mysite/__pycache__/*
+mysite/mysite/wsgi.py
+mysite/myapp/__pycache__/*
+mysite/myapp/migrations/__pycache__/*
+mysite/myapp/templatetags/__pycache__/*
+mysite/myapp/old_*
+mysite/static/*
+mysite/package-lock.json
+mysite/node_modules/*
+mysite/userprofiles/__pycache__/*
+mysite/userprofiles/migrations/__pycache__/*

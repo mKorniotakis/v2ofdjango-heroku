@@ -1,0 +1,11 @@
+.avatar {
+    height: 20px;
+}
+
+tr.even {
+    background-color: #5897fb;
+}
+
+tr.odd {
+    background-color: #c0c0c0;
+}

@@ -1,0 +1,66 @@
+{% extends "account/base.html" %}
+
+{% load i18n account socialaccount filters %}
+
+{% block head_title %}{% trans "Sign Up" %}{% endblock %}
+
+{% block head_links %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'account/css/login.css' %}"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-social/5.1.1/bootstrap-social.css"
+          rel="stylesheet"/>
+{% endblock %}
+
+{% block body_tag %}
+    <body class="login-page sidebar-collapse">
+{% endblock %}
+
+{% block main %}
+    <div class="page-header header-filter"
+         style="background-image: url({% static 'assets/img/bg1.jpg' %});
+                 background-size: cover; background-position: top center;">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-6 ml-auto mr-auto">
+                    <div class="card card-login">
+                        <form class="form-signin" id="signin_form" method="post" action="{% url 'account_signup' %}">
+                            <div class="card-header card-header-primary text-center">
+                                <h4 class="card-title">{% trans "Sign up" %}</h4>
+                                <img src="{% static 'account/img/logo.png' %}" alt="" width="72" height="72">
+                            </div>
+                            <div class="card-body">
+                                <p>{% blocktrans %}Please
+                                    <a href="{{ login_url }}">Sign in</a>
+                                {% endblocktrans %}</p>
+                                <div class="login-or">{% trans 'or' %}</div>
+
+                                {% csrf_token %}
+                                {#    https://stackoverflow.com/questions/6959178/how-to-set-css-class-of-a-label-in-a-django-form-declaration#}
+                                {% for field in form %}
+                                    <p>
+                                        <label class="sr-only" for="{{ field.name }}">{{ field.label }}</label>
+                                        {{ field }}
+                                    </p>
+                                {% endfor %}
+                                {#        {{ form.as_p }}#}
+                                {% if redirect_field_value %}
+                                    <input id="id_{{ redirect_field_name }}" type="hidden"
+                                           name="{{ redirect_field_name }}"
+                                           value="{{ redirect_field_value }}"/>
+                                {% endif %}
+                                <button class="primaryAction btn btn-lg btn-primary btn-link"
+                                        type="submit">{% trans "Sign Up" %} &raquo;
+                                </button>
+                            </div>
+                            <p class="text-muted text-center">©
+                                <script>
+                                    document.write(new Date().getFullYear())
+                                </script>
+                            </p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
