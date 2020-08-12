@@ -15,6 +15,6 @@ from django.core.wsgi import get_wsgi_application
 
 # For integration with apache2.4 you should uncomment the next 1 commented line
 
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "mysite.settings")
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "mysite/mysite.settings")
 
 application = get_wsgi_application()
