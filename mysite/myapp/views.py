@@ -24,14 +24,20 @@ schema_view = get_swagger_view(title='V2OFDjango API')
 
 
 class HomePageView(TemplateView):
+    authentication_classes = (JSONWebTokenAuthentication, SessionAuthentication, BasicAuthentication)
+    permission_classes = IsAuthenticated
     template_name = 'home.html'
 
 
 class MKPageView(TemplateView):
+    authentication_classes = (JSONWebTokenAuthentication, SessionAuthentication, BasicAuthentication)
+    permission_classes = IsAuthenticated
     template_name = 'mk/base.html'
 
 
 class MapPageView(TemplateView):
+    authentication_classes = (JSONWebTokenAuthentication, SessionAuthentication, BasicAuthentication)
+    permission_classes = IsAuthenticated
     template_name = 'gis/index.html'
 
 
