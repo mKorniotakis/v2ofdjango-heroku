@@ -1,3 +1,4 @@
+git_push.sh
 .idea
 dump*
 mysite/mysite/__pycache__/*
