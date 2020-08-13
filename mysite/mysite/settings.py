@@ -140,32 +140,31 @@ TEMPLATES = [
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.contrib.gis.db.backends.postgis',
-        'OPTIONS': {'options': '-c search_path=public'},
-        'NAME': 'measurements',
-        'USER': 'cr',
-        'PASSWORD': '',
-        'HOST': '',
-        'PORT': '',
-    },
-    # 'legacyDB': {
-    #     'ENGINE': 'django.contrib.gis.db.backends.postgis',
-    #     'OPTIONS': {'options': '-c search_path=public',
-    #                 'sslmode': 'require',
-    #                 },
-    #     'NAME': 'Measurements',
-    #     'USER': 'cr',
-    #     'PASSWORD': '*******',
-    #     'HOST': 'test.hua.gr',
-    #     'PORT': '',
-    # }
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.contrib.gis.db.backends.postgis',
+#         'OPTIONS': {'options': '-c search_path=public'},
+#         'NAME': 'measurements',
+#         'USER': 'cr',
+#         'PASSWORD': '',
+#         'HOST': '',
+#         'PORT': '',
+#     },
+#     # 'legacyDB': {
+#     #     'ENGINE': 'django.contrib.gis.db.backends.postgis',
+#     #     'OPTIONS': {'options': '-c search_path=public',
+#     #                 'sslmode': 'require',
+#     #                 },
+#     #     'NAME': 'Measurements',
+#     #     'USER': 'cr',
+#     #     'PASSWORD': '*******',
+#     #     'HOST': 'test.hua.gr',
+#     #     'PORT': '',
+#     # }
+#
+# }
 
-}
-
-db_from_env = dj_database_url.config(conn_max_age=500)
-DATABASES['default'].update(db_from_env)
+DATABASES['default'] = dj_database_url.config()
 
 # DATABASE_ROUTERS = ['myapp.routers.legacyDB']
 
