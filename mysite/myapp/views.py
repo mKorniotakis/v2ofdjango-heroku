@@ -622,7 +622,6 @@ class NetworkTypeView(viewsets.ModelViewSet):
     # Operating System View (Mobile Version)
 
 
-
 class OperatingSystemView(viewsets.ModelViewSet):
     authentication_classes = (JSONWebTokenAuthentication, SessionAuthentication, BasicAuthentication)
     permission_classes = (IsAuthenticatedOrReadOnly,)

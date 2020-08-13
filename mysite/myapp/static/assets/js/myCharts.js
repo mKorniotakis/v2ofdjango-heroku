@@ -78,7 +78,7 @@ var password = '';
 
 var GetChartDataNtw = function () {
     $.ajax({
-        url: 'http://localhost:8000/myapp/networks/',
+        url: '../networks/',
         method: 'GET',
         dataType: 'json',
         beforeSend: function (xhr) {
@@ -254,7 +254,7 @@ var password = '';
 
 var getChartDataSelection = function () {
     $.ajax({
-        url: 'http://localhost:8000/myapp/' + $('#iMeasurements').val() + '/' + $('#daterange').val() + '/' + $('#iNetworkType').val() + '/',
+        url: 'https://v2ofdjango.herokuapp.com/myapp/' + $('#iMeasurements').val() + '/' + $('#daterange').val() + '/' + $('#iNetworkType').val() + '/',
         method: 'GET',
         dataType: 'json',
         beforeSend: function (xhr) {
@@ -347,7 +347,7 @@ var password = '';
 
 var getDateRangeChart = function () {
     $.ajax({
-        url: 'http://localhost:8000/myapp/' + $('#iMeasurements').val() + '/' + $('#daterange').val() + '/',
+        url: 'https://v2ofdjango.herokuapp.com/myapp/' + $('#iMeasurements').val() + '/' + $('#daterange').val() + '/',
         method: 'GET',
         dataType: 'json',
         beforeSend: function (xhr) {
