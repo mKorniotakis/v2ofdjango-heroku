@@ -27,7 +27,7 @@ urlpatterns = [
     url(r'^map/', MapPageView.as_view(), name='map'),
 
     # Display data
-    # url(r'^operators/', OperatorView.as_view({'get': 'list'})),
+    url(r'^operators/', OperatorView.as_view({'get': 'list'})),
 
     # Count all providers
     url(r'^providers/', CountView.as_view({'get': 'list'})),

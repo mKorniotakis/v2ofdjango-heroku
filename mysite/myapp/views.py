@@ -82,19 +82,19 @@ class UserViewSet(viewsets.ModelViewSet):
         return Response(content)
 
 
-# class OperatorView(viewsets.ModelViewSet):
-#     authentication_classes = (JSONWebTokenAuthentication, SessionAuthentication, BasicAuthentication)
-#     permission_classes = (IsAuthenticatedOrReadOnly,)
-#     queryset = Measurements.objects.distinct("operatorname").all()
-#     serializer_class = MeasurementsSerializer
-#
-#     def get_queryset(self):
-#         """ allow rest api to filter by operatorname """
-#         queryset = Measurements.objects.distinct("operatorname").all()
-#         operatorname = self.request.query_params.get('operatorname', None)
-#         if operatorname is not None:
-#             queryset = queryset.filter(operatorname=operatorname)
-#         return queryset
+class OperatorView(viewsets.ModelViewSet):
+    authentication_classes = (JSONWebTokenAuthentication, SessionAuthentication, BasicAuthentication)
+    permission_classes = (IsAuthenticatedOrReadOnly,)
+    queryset = Measurements.objects.distinct("operatorname").all()
+    serializer_class = MeasurementsSerializer
+
+    def get_queryset(self):
+        """ allow rest api to filter by operatorname """
+        queryset = Measurements.objects.order_by('operatorname').distinct("operatorname").all()
+        operatorname = self.request.query_params.get('operatorname', None)
+        if operatorname is not None:
+            queryset = queryset.filter(operatorname=operatorname)
+        return queryset
 
 
 class MeasurementsView(generics.ListCreateAPIView):
