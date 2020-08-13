@@ -165,7 +165,7 @@ TEMPLATES = [
 # }
 
 DATABASES = { 'default': dj_database_url.config(conn_max_age=500),
-              'ENGINE': dj_database_url.parse('postgis://ipqbrgbzlehlyb:6116fb19adc4779f2ca203045c78751f360e1740afac98714960cf493578b8b8@ec2-54-243-67-199.compute-1.amazonaws.com:5432/d13vbuceksjgtc')}
+              'ENGINE': dj_database_url.parse(engine='django.contrib.gis.db.backends.postgis')}
 
 # DATABASE_ROUTERS = ['myapp.routers.legacyDB']
 
