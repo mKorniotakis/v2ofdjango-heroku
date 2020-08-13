@@ -164,7 +164,8 @@ TEMPLATES = [
 #
 # }
 
-DATABASES = { 'default': dj_database_url.config() }
+DATABASES = { 'default': dj_database_url.config(conn_max_age=500),
+              'ENGINE': 'django.contrib.gis.db.backends.postgis'}
 
 # DATABASE_ROUTERS = ['myapp.routers.legacyDB']
 
