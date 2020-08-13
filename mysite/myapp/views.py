@@ -15,7 +15,8 @@ from braces.views import GroupRequiredMixin
 from django_tables2 import RequestConfig
 from django_tables2 import MultiTableMixin
 from rest_framework_swagger.views import get_swagger_view
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
 
 from .tables import *
 from .serializers import *
@@ -25,20 +26,21 @@ schema_view = get_swagger_view(title='V2OFDjango API')
 
 
 class HomePageView(TemplateView):
-    authentication_classes = (JSONWebTokenAuthentication, SessionAuthentication, BasicAuthentication)
-    permission_classes = IsAuthenticated
+
     template_name = 'home.html'
 
 
-class MKPageView(LoginRequiredMixin, TemplateView):
+class MKPageView(TemplateView):
 
-    login_url = 'mk/base.html'
-    redirect_field_name = 'home'
+    template_name = 'mk/base.html'
+
+    @method_decorator(login_required)
+    def dispatch(self, *args, **kwargs):
+        return super().dispatch(*args, **kwargs)
 
 
 class MapPageView(TemplateView):
-    authentication_classes = (JSONWebTokenAuthentication, SessionAuthentication, BasicAuthentication)
-    permission_classes = IsAuthenticated
+
     template_name = 'gis/index.html'
 
 
