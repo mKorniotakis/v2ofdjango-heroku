@@ -15,6 +15,7 @@ from braces.views import GroupRequiredMixin
 from django_tables2 import RequestConfig
 from django_tables2 import MultiTableMixin
 from rest_framework_swagger.views import get_swagger_view
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 from .tables import *
 from .serializers import *
@@ -29,10 +30,10 @@ class HomePageView(TemplateView):
     template_name = 'home.html'
 
 
-class MKPageView(TemplateView):
-    authentication_classes = (JSONWebTokenAuthentication, SessionAuthentication, BasicAuthentication)
-    permission_classes = IsAuthenticated
-    template_name = 'mk/base.html'
+class MKPageView(LoginRequiredMixin, TemplateView):
+
+    login_url = 'mk/base.html'
+    redirect_field_name = 'home'
 
 
 class MapPageView(TemplateView):
