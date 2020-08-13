@@ -302,7 +302,7 @@ LOGOUT_URL = "myapp/account/logout/"
 LOGIN_REDIRECT_URL = "home"
 LOGOUT_REDIRECT_URL = "login"
 
-SITE_ID = 1
+SITE_ID = 2
 
 # auth and allauth settings
 ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
