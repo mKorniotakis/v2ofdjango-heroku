@@ -2,6 +2,7 @@ from django.urls import path, re_path
 from django.conf.urls import url, include
 from rest_framework_jwt.views import obtain_jwt_token, refresh_jwt_token, verify_jwt_token
 from allauth.account.views import LoginView
+from django.contrib.auth.decorators import login_required
 
 from myapp.views import *
 
@@ -20,7 +21,7 @@ urlpatterns = [
 
     url(r'^$', LoginView.as_view(), name='login'),
 
-    url(r'^home/', HomePageView.as_view(), name='home'),
+    url(r'^home/', login_required(HomePageView.as_view()), name='home'),
 
     # Display Openlayers map
     url(r'^map/', MapPageView.as_view(), name='map'),
@@ -92,5 +93,5 @@ urlpatterns = [
     url(r'^data.geojson$', geojsonFeed, name='data'),
 
     #path('mk/', MKPageView.as_view(), name='dashboard'),
-    re_path(r'^mk/', TablesListView.as_view(), name='dashboard'),
+    re_path(r'^mk/', login_required(TablesListView.as_view()), name='dashboard'),
 ]
